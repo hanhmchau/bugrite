@@ -1,0 +1,18 @@
+<div class="option">
+	<input type="radio" name="weapon" id="{{id}}" value="{{id}}" {{#unless @index}}checked="checked"{{/unless}} />
+	<label for="{{id}}" aria-label="{{name}}">
+		<span class="radio-button"></span>
+		<img src="{{icon}}" />
+		<div class="weapon-details">
+			<div class="row">
+				<span class="weapon-name">{{name}}</span>
+				{{#if existingRite}}
+					<span class="badge" title="This weapon already has {{existingRite}} applied.">{{existingRite}}</span>
+				{{/if}}
+			</div>
+			<div class="row">
+				{{> "modules/bugrite/templates/select/variant-list.hbs" variants}}
+			</div>
+		</div>
+	</label>
+</div>

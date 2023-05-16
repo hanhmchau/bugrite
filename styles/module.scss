@@ -1,0 +1,139 @@
+// @import compass;
+
+$color-chip: linear-gradient(90deg, #d0a963, #ffe6ba);
+$color-card--white: linear-gradient(45deg, #fff, #cdcdcd);
+$color-card--blue: linear-gradient(45deg, #748dfb, #3859e8);
+$color-card--dark: linear-gradient(45deg, #616161, #484848);
+
+$color-red: #f64062;
+$color-red--light: #ea619a;
+
+#choose-weapon-for-rite-application {
+	.window-content {
+		overflow-x: unset;
+		overflow-y: unset;
+		min-width: 320px;
+	}
+}
+
+.bugrite {
+	display: flex;
+	flex-direction: column;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		max-width: 75vw;
+		max-height: 75vh;
+		overflow-x: visible;
+		overflow-y: auto;
+	}
+
+	[type="radio"] {
+		z-index: -1;
+		position: absolute;
+		opacity: 0;
+
+		&:checked ~ label {
+			border-color: $color-red;
+			background-color: rgba($color-red--light, 0.14);
+
+			&:before {
+				will-change: transform, border-width, border-color;
+			}
+
+			&:after {
+				will-change: opacity, box-shadow;
+			}
+
+			> .radio-button {
+				will-change: transform;
+				border: 0;
+				background-image: linear-gradient(to top right, $color-red--light, $color-red);
+				animation: radio 400ms cubic-bezier(0.17, 0.89, 0.32, 1.49);
+
+				&:after {
+					content: "";
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					width: 6px;
+					height: 6px;
+					border-radius: 10px;
+					background-color: #fff;
+				}
+			}
+		}
+	}
+
+	label {
+		position: relative;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 5px 5px 5px 10px;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		background-color: transparent;
+		box-sizing: border-box;
+
+		&:hover {
+			border-color: rgba($color-red, 0.6);
+			background-color: rgba($color-red--light, 0.06);
+		}
+
+		> .radio-button {
+			position: relative;
+			display: inline-flex;
+			width: 20px;
+			height: 20px;
+			border-radius: 20px;
+			border: 2px solid #454861;
+			background-image: linear-gradient(to bottom, #3b4059, #1c1e2d);
+		}
+
+		.weapon-details {
+			flex: 1;
+		}
+
+		img {
+			border: none;
+			width: 36px;
+			border-radius: 25%;
+			margin: 0 10px;
+		}
+
+		.badge {
+			background: #fe8b0e;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			min-width: 20px;
+			height: 20px;
+			padding: 0 8px;
+			border-radius: 20px;
+			font-size: 12px;
+			font-weight: 600;
+			color: #fff;
+			text-align: center;
+			z-index: 1;
+			margin-left: 2px;
+		}
+
+		.variant-count {
+			font-size: small;
+			color: #727272;
+			margin-top: 1px;
+			display: inline-block;
+		}
+	}
+
+	.option {
+		margin-bottom: 4px;
+	}
+
+	button[type="submit"] {
+		margin-top: 5px;
+	}
+}

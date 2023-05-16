@@ -1,0 +1,5 @@
+<form class="bugrite">
+	<p>Choose a weapon to apply <b>{{newRite}}</b> to:</p>
+	<div class="container">{{#each weapons}} {{> "modules/bugrite/templates/select/option.hbs" this}} {{/each}}</div>
+	<button type="submit"><i class="fab fa-gripfire"></i>Add Crimson Rite</button>
+</form>

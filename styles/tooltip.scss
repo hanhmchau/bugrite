@@ -1,0 +1,47 @@
+.bugrite {
+	.con-tooltip {
+		position: relative;
+	}
+
+	/*tooltip */
+	.tooltip {
+		display: none;
+		z-index: 1;
+
+		width: auto;
+		padding: 0px 10px 0px 5px;
+
+		background: #444;
+		color: var(--color-text-light-highlight);
+
+		position: fixed;
+
+		border-radius: 4px;
+		font: 18px;
+
+		li {
+			white-space: nowrap;
+		}
+	}
+
+	/* tooltip  after*/
+	.tooltip::after {
+		content: " ";
+		width: 0;
+		height: 0;
+
+		border-style: solid;
+		border-width: 10px 8px 0 8px;
+		border-color: #444 transparent transparent transparent;
+
+		position: absolute;
+		top: 6px;
+		left: -10px;
+		transform: rotate(90deg);
+	}
+
+	.con-tooltip:hover .tooltip {
+		visibility: visible;
+		opacity: 1;
+	}
+}

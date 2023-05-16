@@ -1,0 +1,12 @@
+{{#if this.length}}
+	<div class="variant-count con-tooltip right">
+		<div>+{{this.length}} {{pluralize this.length 'variant' 'variants'}}</div>
+		<div class="tooltip">
+			<ul>
+				{{#each this}}
+					<li>{{this}}</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+{{/if}}

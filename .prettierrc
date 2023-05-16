@@ -1,0 +1,14 @@
+{
+	"tabWidth": 4,
+	"useTabs": true,
+	"printWidth": 250,
+	"trailingComma": "none",
+	"overrides": [
+		{
+			"files": "**/*.{hbs}",
+			"options": {
+				"parser": "glimmer"
+			}
+		}
+	]
+}
