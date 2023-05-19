@@ -6,8 +6,8 @@ import concat from "gulp-concat";
 gulp.task("sass", function (cb) {
 	gulp.src(["styles/*.scss", "styles/**/*.scss"])
 		.pipe(sass({ outputStyle: "compressed" }))
-		.pipe(concat("bugrite.css"))
-		.pipe(gulp.dest("css/"));
+		.pipe(concat("bugrite.min.css"))
+		.pipe(gulp.dest("styles/"));
 	cb();
 });
 
