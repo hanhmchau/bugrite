@@ -9,7 +9,7 @@
 
 	"esmodules": ["scripts/module.js"],
 	"scripts": ["scripts/lib/lib.js"],
-	"styles": ["dist/bugrite.min.css"],
+	"styles": ["dist/bugrite.css"],
 
 	"packs": [
 		{
