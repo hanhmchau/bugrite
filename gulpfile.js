@@ -7,7 +7,7 @@ gulp.task("sass", function (cb) {
 	gulp.src(["styles/*.scss", "styles/**/*.scss"])
 		.pipe(sass({ outputStyle: "compressed" }))
 		.pipe(concat("bugrite.css"))
-		.pipe(gulp.dest("dist/"));
+		.pipe(gulp.dest("css/"));
 	cb();
 });
 
