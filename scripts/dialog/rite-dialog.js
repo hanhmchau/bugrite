@@ -1,4 +1,4 @@
-import { getAssociatedRite, getBaseWeaponName } from "../lib/rite-weapon.js";
+import { getAssociatedBuff, getBaseWeaponName } from "../lib/rite-weapon.js";
 
 export default class RiteDialog extends FormApplication {
 	constructor(object, options) {
@@ -22,17 +22,17 @@ export default class RiteDialog extends FormApplication {
 		const { weapons, actor, newRite } = this.object;
 		const baseWeaponIds = [...weapons.keys()];
 		return {
-			newRite: newRite.riteLabel,
+			newBuff: newRite.label,
 			weapons: baseWeaponIds.map((baseWeaponId) => {
 				const variantIds = weapons.get(baseWeaponId);
 				const baseWeapon = actor.items.get(baseWeaponId);
-				const existingRite = getAssociatedRite(baseWeapon);
+				const existingBuff = getAssociatedBuff(baseWeapon, "rite");
 				return {
 					id: baseWeapon.id,
-					name: getBaseWeaponName(baseWeapon),
+					name: getBaseWeaponName(baseWeapon, "rite"),
 					icon: baseWeapon.data.img,
-					existingRite: existingRite?.riteLabel,
-					variants: variantIds.map((id) => actor.items.get(id)).map((item) => getBaseWeaponName(item))
+					existingBuff: existingBuff?.label,
+					variants: variantIds.map((id) => actor.items.get(id)).map((item) => getBaseWeaponName(item, "rite"))
 				};
 			})
 		};

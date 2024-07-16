@@ -13,7 +13,7 @@ const RITE_MAP = {
 function elaborateRite(name) {
 	return {
 		damageType: RITE_MAP[name],
-		riteLabel: `${name.toTitleCase()} Rite`,
+		label: `${name.toTitleCase()} Rite`,
 		riteFullName: `Rite of the ${name.toTitleCase()}`
 	};
 }
@@ -129,7 +129,7 @@ function buildRite(riteName) {
 					turns: undefined
 				},
 				icon: img,
-				label: rite.riteLabel,
+				label: rite.label,
 				origin: "Actor.Pg2fMwoMNXgLlMPt.Item.OQN0acdG62ucNsQb",
 				transfer: false,
 				flags: {

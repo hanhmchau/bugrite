@@ -8,8 +8,8 @@
 	"author": "Arietta",
 
 	"esmodules": ["scripts/module.js"],
-	"scripts": ["scripts/lib/lib.js"],
-	"styles": ["styles/bugrite.min.css"],
+	"scripts": ["scripts/lib/lib.js", "scripts/util/jquery.plugins.js"],
+	"styles": ["styles/bugrite.min.css", "styles/animate.min.css"],
 
 	"packs": [
 		{

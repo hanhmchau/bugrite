@@ -1,0 +1,23 @@
+<form class="bugrite infusion-dialog">
+	<div class="outer-wrap">
+		<div class="middle-wrap left">
+			<div class="phase-1">
+				<div class="heading"><b>Choose a damage type</b> <small>1/2</small></div>
+				<div class="card-box">
+					{{#each damageTypes}} {{> "modules/bugrite/templates/select/damage-type.hbs" this}} {{/each}}
+				</div>
+			</div>
+
+			<div class="phase-2">
+				<div class="heading"><b>Choose a weapon</b> <small>2/2</small></div>
+				<div class="container">{{#each weapons}} {{> "modules/bugrite/templates/select/option.hbs" this}}
+					{{/each}}
+				</div>
+				<footer>
+					<button type="button" action="back" class="back">Back</button>
+					<button type="submit"><i class="fab fa-gripfire"></i>Infuse</button>
+				</footer>
+			</div>
+		</div>
+	</div>
+</form>

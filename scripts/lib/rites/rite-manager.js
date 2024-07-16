@@ -1,4 +1,4 @@
-import { getBaseName } from "./weapon-grouper.js";
+import { getBaseName } from "../weapon-grouper.js";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -7,16 +7,16 @@ function getUpdatedRite(effectId, damageDice, weapon, newRite) {
 	const originalName = existingRite?.originalName || weapon.data.name;
 	const originalParts = existingRite?.originalParts || weapon.data.data.damage.parts;
 	const originalContext = existingRite?.originalContext || weapon.data.flags.betterRolls5e?.quickDamage?.context || {};
-	const { damageType, riteLabel } = newRite;
+	const { damageType, label } = newRite;
 	return {
 		_id: weapon.id,
-		name: addRiteToWeaponName(originalName, riteLabel),
+		name: addRiteToWeaponName(originalName, label),
 		"data.damage.parts": [...originalParts, [`1d${damageDice}`, damageType]],
 		flags: {
 			bugrite: {
 				rite: {
 					effectId,
-					riteLabel,
+					label,
 					originalName,
 					originalParts,
 					originalContext
@@ -26,7 +26,7 @@ function getUpdatedRite(effectId, damageDice, weapon, newRite) {
 				quickDamage: {
 					context: {
 						...originalContext,
-						[originalParts.length]: riteLabel
+						[originalParts.length]: label
 					}
 				}
 			}
@@ -34,7 +34,7 @@ function getUpdatedRite(effectId, damageDice, weapon, newRite) {
 	};
 }
 
-function addRiteToWeaponName(originalName, riteLabel) {
+function addRiteToWeaponName(originalName, label) {
 	const variants = [];
 	const reBrackets = /\((.*?)\)/g;
 	let found = false;
@@ -42,17 +42,20 @@ function addRiteToWeaponName(originalName, riteLabel) {
 		const variantsInsideBrackets = found[1].split(",").map((str) => str.trim());
 		variants.push(...variantsInsideBrackets);
 	}
-	variants.push(riteLabel);
+	variants.push(label);
 	return `${getBaseName(originalName)} (${variants.join(", ")})`;
 }
 
 async function updateEffect(actor, effectId, weaponGroupName, weaponIds, newRite) {
 	const effect = actor.effects.get(effectId);
 	if (effect) {
+		const [riteKey] = Object.entries(RITE_TYPES).find(([key, riteType]) => riteType.label === newRite.label);
+
 		await effect.update({
-			label: `${newRite.riteLabel} (${weaponGroupName})`,
+			label: `${newRite.label} (${weaponGroupName})`,
 			flags: {
 				bugrite: {
+					riteKey,
 					weaponGroupName,
 					weaponIds
 				}
@@ -117,7 +120,7 @@ const RITE_MAP = {
 function elaborateRite(name) {
 	return {
 		damageType: RITE_MAP[name],
-		riteLabel: `${name.toTitleCase()} Rite`,
+		label: `${name.toTitleCase()} Rite`,
 		riteFullName: `Rite of the ${name.toTitleCase()}`
 	};
 }

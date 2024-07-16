@@ -1,9 +1,9 @@
-export function getAssociatedRite(weapon) {
-	return weapon.getFlag("bugrite", "rite");
+export function getAssociatedBuff(weapon, flagKey) {
+	return weapon.getFlag("bugrite", flagKey);
 }
 
-export function getBaseWeaponName(weapon) {
-	const rite = weapon.getFlag("bugrite", "rite");
+export function getBaseWeaponName(weapon, flagKey) {
+	const rite = weapon.getFlag("bugrite", flagKey);
 	if (rite) {
 		return rite.originalName;
 	} else {
@@ -11,10 +11,10 @@ export function getBaseWeaponName(weapon) {
 	}
 }
 
-export function getWeaponsWithThisRite(actor, efDataFlags) {
-	const riteEffectFlags = efDataFlags.bugrite || {};
-	const weaponGroupName = riteEffectFlags.weaponGroupName || "";
-	const associatedWeaponIds = riteEffectFlags.weaponIds || [];
+export function getWeaponsWithThisBuff(actor, efDataFlags) {
+	const buffEffectFlags = efDataFlags.bugrite || {};
+	const weaponGroupName = buffEffectFlags.weaponGroupName || "";
+	const associatedWeaponIds = buffEffectFlags.weaponIds || [];
 	return {
 		weaponGroupName,
 		weapons: actor.items.filter((item) => associatedWeaponIds.includes(item.id))
