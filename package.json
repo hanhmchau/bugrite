@@ -1,6 +1,6 @@
 {
 	"name": "bugrite",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "![](https://img.shields.io/badge/Foundry-v10-informational)\r <!--- Downloads @ Latest Badge -->\r <!--- replace <user>/<repo> with your username/repository -->\r <!--- ![Latest Release Download Count](https://img.shields.io/github/downloads/<user>/<repo>/latest/module.zip) -->",
 	"main": "index.js",
 	"type": "module",
