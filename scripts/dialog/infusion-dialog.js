@@ -105,7 +105,6 @@ export default class InfusionDialog extends FormApplication {
 	}
 
 	async _updateObject(event, formData) {
-		console.warn(formData);
 		if (formData.weapon) {
 			this.object.promises.resolve(formData);
 		} else {

@@ -21,9 +21,9 @@
 			"system": "dnd5e"
 		},
 		{
-			"name": "bugrite-infusions",
-			"label": "Buggu's Chromatic Infusions",
-			"path": "./packs/infusions.db",
+			"name": "bugrite-infusion",
+			"label": "Buggu's Chromatic Infusion",
+			"path": "./packs/infusion.db",
 			"entity": "Item",
 			"type": "Item",
 			"system": "dnd5e"
